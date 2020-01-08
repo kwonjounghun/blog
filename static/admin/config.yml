@@ -6,15 +6,51 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "content/blog"
+  - name: "project"
+    label: "Project"
+    folder: "content/project"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
-     preview: false
+      preview: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Private", name: "private", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
+      - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+  - name: "study"
+    label: "Study"
+    folder: "content/study"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Private", name: "private", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
+      - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+  - name: "daily"
+    label: "Daily"
+    folder: "content/daily"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "Private", name: "private", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
+      - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
