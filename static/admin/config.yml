@@ -14,6 +14,7 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "Collection", name: "collection", widget: "hidden", default: "project"}
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
@@ -30,6 +31,7 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "Collection", name: "collection", widget: "hidden", default: "study"}
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
@@ -46,6 +48,7 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "Collection", name: "collection", widget: "hidden", default: "daily"}
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
