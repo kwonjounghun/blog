@@ -1,7 +1,117 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path');
+const lodash = require('lodash');
 
-// You can delete this file if you're not using it
+const getCollectionList = async (graphql) => {
+  const collections = await graphql(`
+    query loadPagesQuery {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              collection
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+
+    // Create blog post pages.
+    const collections = lodash.map(result.data.allMarkdownRemark.edges, 'node.frontmatter.collection');
+    const uniqByCollections = lodash.uniqBy(collections);
+
+    return uniqByCollections;
+  });
+
+  return collections;
+}
+
+const getOneCollectionList = async (graphql, collection) => {
+  const collections = await graphql(`
+    query loadPagesQuery {
+      allMarkdownRemark(filter: {frontmatter: {private: {eq: true}, collection: {eq: "${collection}"}}}) {
+        edges {
+          node {
+            frontmatter {
+              title
+              private
+              date
+              Thumbnail
+              category
+              description
+              collection
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+
+    return lodash.map(result.data.allMarkdownRemark.edges, 'node.frontmatter');
+  });
+
+  return collections;
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  // const indexPage = path.resolve('src/templates/main.jsx');
+  // Query for markdown nodes to use in creating pages.
+  // You can query for whatever data you want to create pages for e.g.
+  // products, portfolio items, landing pages, etc.
+  // Variables can be added as the second function parameter
+
+  const collections = await getCollectionList(graphql);
+
+  const siteInfo = {
+    collections,
+    tags: [],
+  }
+
+  const createIndexPage = () => {
+    const Template = path.resolve(`src/templates/IndexPage.jsx`);
+    createPage({
+      path: '/',
+      component: Template,
+      // In your blog post template's graphql query, you can use path
+      // as a GraphQL variable to query for data from the markdown file.
+      context: {
+        siteInfo,
+      },
+    });
+  };
+
+  const listPageData = collections.map(async (item) => {
+    const data = await getOneCollectionList(graphql, item);
+    console.log('data', data);
+    return data;
+  });
+
+  const createPostPage = (item, data) => {
+    const Template = path.resolve(`src/templates/PostListPage.jsx`);
+    createPage({
+      path: `${item}`,
+      component: Template,
+      // In your blog post template's graphql query, you can use path
+      // as a GraphQL variable to query for data from the markdown file.
+      context: {
+        siteInfo,
+        data
+      },
+    });
+  };
+
+  listPageData.map((item, index) => {
+    console.log('sdfadsf', item);
+    createPostPage(collections[index], item);
+  })
+
+  createIndexPage();
+
+};

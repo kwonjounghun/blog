@@ -1,10 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
-const Header = props => {
+const Header = ({ navigationList = [], siteTitle }) => {
     return (
         <header>
-            header
+            {siteTitle}
+            {navigationList.map(item => {
+                return (<Link to={`/${item}`}>{item}</Link>);
+            })}
         </header>
     )
 }
