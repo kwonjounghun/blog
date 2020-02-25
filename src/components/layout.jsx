@@ -5,12 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
 
-import Header from "./Header";
-import "./layout.css"
+import Header from './Header';
+import { ProfileImage } from './commons';
+import '../styles/reset.scss';
 
 const Layout = ({ navigationList, children }) => {
   const data = useStaticQuery(graphql`
@@ -34,6 +35,7 @@ const Layout = ({ navigationList, children }) => {
           paddingTop: 0,
         }}
       >
+        <ProfileImage/>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
