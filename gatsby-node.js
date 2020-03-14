@@ -108,7 +108,6 @@ exports.createPages = async ({ graphql, actions }) => {
   };
 
   listPageData.map((item, index) => {
-    console.log('sdfadsf', item);
     createPostPage(collections[index], item);
   })
 
