@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import styles from './DefaultContentWrapper.module.scss';
+import styles from './ContentWrapper.module.scss';
 
-const DefaultContentWrapper = ({ children }) => {
+const ContentWrapper = ({ children }) => {
     return (
         <div className={styles.contentWrapper}>
             {children}
@@ -12,8 +12,8 @@ const DefaultContentWrapper = ({ children }) => {
     )
 }
 
-DefaultContentWrapper.propTypes = {
+ContentWrapper.propTypes = {
 
 }
 
-export default DefaultContentWrapper
+export default ContentWrapper

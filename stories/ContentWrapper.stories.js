@@ -1,15 +1,15 @@
 import React from 'react';
-import { DefaultContentWrapper } from '../src/components/commons';
+import { ContentWrapper } from '../src/components/commons';
 import PostMakerInfoBox from '../src/components/PostMakerInfoBox';
 import '../src/styles/reset.scss';
 
 export default {
-    title: 'DefaultContentWrapper',
-    component: DefaultContentWrapper,
+    title: 'ContentWrapper',
+    component: ContentWrapper,
 };
 
 export const defaultComponent = () => (
-    <DefaultContentWrapper>
+    <ContentWrapper>
         <PostMakerInfoBox
             makerName="작성자"
             date="2020-02-16"
@@ -17,7 +17,7 @@ export const defaultComponent = () => (
             category="blog"
             isAbsolute 
         />
-    </DefaultContentWrapper>
+    </ContentWrapper>
 );
 
 

@@ -5,15 +5,23 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import cx from 'classnames';
 
 import Header from './Header';
-import { ProfileImage } from './commons';
-import '../styles/reset.scss';
+import { ContentWrapper } from './commons';
+import SideBar from './SideBar';
 
-const Layout = ({ navigationList, children }) => {
+import '../styles/reset.scss';
+import styles from './layout.module.scss';
+
+const Layout = ({
+  navigationList,
+  isSideBar,
+  children
+}) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,7 +33,7 @@ const Layout = ({ navigationList, children }) => {
   `)
 
   return (
-    <>
+    <ContentWrapper>
       <Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} />
       <div
         style={{
@@ -35,15 +43,17 @@ const Layout = ({ navigationList, children }) => {
           paddingTop: 0,
         }}
       >
-        <ProfileImage/>
-        <main>{children}</main>
+        <main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
+        <div className={cx(styles.sideBar)}>
+          <SideBar />
+        </div>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </ContentWrapper>
   )
 }
 
