@@ -1,0 +1,22 @@
+@import '../styles/utils';
+
+.mainContentWrapper {
+    position: relative;
+    width: 100%;
+
+    &.useSideBar {
+        @include breakpoints('medium') {
+            width: calc(100% - 320px);
+        }
+    }
+}
+
+.sideBar {
+    position: relative;
+    @include breakpoints('medium') {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 320px;
+    }
+}

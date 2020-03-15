@@ -8,7 +8,6 @@ const BlogPost = ({ ...props }) => {
   const {
     pageContext,
   } = props;
-  console.log('pageContext', pageContext);
   const {
     siteInfo
   } = pageContext;

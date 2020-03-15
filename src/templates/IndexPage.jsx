@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-import { useStaticQuery, graphql } from "gatsby"
 
 import { SEO, Image, Layout } from "../components";
 
@@ -12,7 +11,7 @@ const IndexPage = ({ ...props }) => {
     siteInfo
   } = pageContext;
     return (
-        <Layout navigationList={siteInfo.collections}>
+        <Layout navigationList={siteInfo.collections} isSideBar>
             <SEO title="Home" />
             <h1>Hi people</h1>
             <p>Welcome to your new Gatsby site.</p>

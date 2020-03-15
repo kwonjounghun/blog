@@ -5,9 +5,14 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    'gatsby-plugin-styled-jsx',
     'gatsby-plugin-netlify-cms',
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        useResolveUrlLoader: true,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
