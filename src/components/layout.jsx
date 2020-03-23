@@ -33,27 +33,22 @@ const Layout = ({
   `)
 
   return (
-    <ContentWrapper>
+    <>
       <Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
-        <div className={cx(styles.sideBar)}>
-          <SideBar />
-        </div>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+      <ContentWrapper>
+        <div>
+          <main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
+          <div className={cx(styles.sideBar)}>
+            <SideBar />
+          </div>
+          <footer>
+            © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </ContentWrapper>
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
+      </ContentWrapper>
+    </>
   )
 }
 
