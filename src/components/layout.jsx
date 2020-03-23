@@ -18,11 +18,11 @@ import '../styles/reset.scss';
 import styles from './layout.module.scss';
 
 const Layout = ({
-  navigationList,
-  isSideBar,
-  children
+	navigationList,
+	isSideBar,
+	children
 }) => {
-  const data = useStaticQuery(graphql`
+	const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -32,28 +32,30 @@ const Layout = ({
     }
   `)
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} />
-      <ContentWrapper>
-        <div>
-          <main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
-          <div className={cx(styles.sideBar)}>
-            <SideBar />
-          </div>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-          {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </ContentWrapper>
-    </>
-  )
+	return (
+		<>
+			<Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} />
+			<ContentWrapper>
+				<div>
+					<main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
+					<div className={cx(styles.sideBar)}>
+						<SideBar />
+					</div>
+					<footer>
+                        © {new Date().getFullYear()}, Built with
+						{` `}
+						<a href="https://www.gatsbyjs.org">Gatsby</a>
+					</footer>
+				</div>
+			</ContentWrapper>
+		</>
+	)
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired,
+	navigationList: PropTypes.array,
+	isSideBar: PropTypes.bool,
 }
 
 export default Layout

@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const PostCard = props => {
-    return (
-        <div>
-            
-        </div>
-    );
+const PostCard = () => {
+	return (
+		<div>
+
+		</div>
+	);
 };
 
 PostCard.propTypes = {

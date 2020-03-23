@@ -1,51 +1,51 @@
 $size: (
-    small: 3 * 8px,
-    middle: 4 * 8px,
-    large: 5 * 8px,
+	small: 3 * 8px,
+	middle: 4 * 8px,
+	large: 5 * 8px,
 );
 
 .profileImage {
-    box-sizing: border-box;
-    position: relative;
-    padding-top: 32px;
-    width: 32px;
-    height: 32px;
-    background-color: red;
-    border-radius: 16px;
-    overflow: hidden;
+	background-color: red;
+	border-radius: 16px;
+	box-sizing: border-box;
+	height: 32px;
+	overflow: hidden;
+	padding-top: 32px;
+	position: relative;
+	width: 32px;
 
-    &.small {
-        padding-top: map-get($size, small);
-        width: map-get($size, small);
-        height: map-get($size, small);
-        border-radius: map-get($size, small) / 2;
-    }
+	&.small {
+		border-radius: map-get($size, small) / 2;
+		height: map-get($size, small);
+		padding-top: map-get($size, small);
+		width: map-get($size, small);
+	}
 
-    &.middle {
-        padding-top: map-get($size, middle);
-        width: map-get($size, middle);
-        height: map-get($size, middle);
-        border-radius: map-get($size, middle) / 2;
-    }
+	&.middle {
+		border-radius: map-get($size, middle) / 2;
+		height: map-get($size, middle);
+		padding-top: map-get($size, middle);
+		width: map-get($size, middle);
+	}
 
-    &.large {
-        padding-top: map-get($size, large);
-        width: map-get($size, large);
-        height: map-get($size, large);
-        border-radius: map-get($size, large) / 2;
-    }
-    
-    &.square {
-        border-radius: 0;
-    }
+	&.large {
+		border-radius: map-get($size, large) / 2;
+		height: map-get($size, large);
+		padding-top: map-get($size, large);
+		width: map-get($size, large);
+	}
 
-    .image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-size: cover;
-    }
+	&.square {
+		border-radius: 0;
+	}
+
+	.image {
+		background-position: center;
+		background-size: cover;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
 }

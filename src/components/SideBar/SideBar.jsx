@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import styles from './SideBar.module.scss';
 
 const SideBar = () => {
-    return (
-        <div className={cx(styles.content)}>
-            sideBar
-        </div>
-    )
+	return (
+		<div className={cx(styles.content)}>
+      sideBar
+		</div>
+	)
 }
 
 SideBar.propTypes = {

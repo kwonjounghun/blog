@@ -1,12 +1,12 @@
 $height: 56px;
 
 .header {
-    width: 100%;
-    height: $height;
+	height: $height;
+	width: 100%;
 }
 
 .content {
-    position: relative;
-    width: 100%;
-    line-height: $height;
+	line-height: $height;
+	position: relative;
+	width: 100%;
 }

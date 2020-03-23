@@ -1,0 +1,17 @@
+{
+	"parser": "babel-eslint",
+	"plugins": [
+		"react"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"rules": {
+		"comma-dangle": 0,
+		"indent": [
+			"error",
+			"tab"
+		]
+	}
+}

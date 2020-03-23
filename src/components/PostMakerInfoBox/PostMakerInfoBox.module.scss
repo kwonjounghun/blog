@@ -1,61 +1,64 @@
 @import '../../styles/utils';
 
 .postMakerInfoBox {
-    position: relative;
-    padding: 16px;
-    padding-left: 72px;
-    background-color: #fff;
-    
-    &.absolute {
-        position: absolute;
-        width: 100%;
-        border-radius: 3px;
-        -webkit-box-shadow: 4px 3px 3px 0px rgba(0,0,0,0.3);
-        -moz-box-shadow: 4px 3px 3px 0px rgba(0,0,0,0.3);
-        box-shadow: 4px 3px 3px 0px rgba(0,0,0,0.2);
-    }
-    
-    .profile {
-        position: absolute;
-        top: 50%;
-        left: 16px;
-        transform: translate(0, -50%);
-    }
+	background-color: #fff;
+	padding: 16px;
+	padding-left: 72px;
+	position: relative;
 
-    .infoBox {
-        .makerName {
-            @include typography('caption');
-            font-weight: map-get($fontWeight, bold);
-            margin-bottom: 8px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-left: 0;
-            margin-bottom: 0;
+	&.absolute {
+		border-radius: 3px;
+		-webkit-box-shadow: 4px 3px 3px 0 rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 4px 3px 3px 0 rgba(0, 0, 0, 0.3);
+		box-shadow: 4px 3px 3px 0 rgba(0, 0, 0, 0.2);
+		position: absolute;
+		width: 100%;
+	}
 
-            &::after {
-                display: block;
-                clear: both;
-                content: '';
-            } 
+	.profile {
+		left: 16px;
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
 
-            li {
-                @include typography('caption');
-                font-weight: map-get($fontWeight, 'light');
-                float: left;
-                margin-left: 16px;
-                margin-bottom: 0;
-                color: $oc-gray-6;
-                text-transform: uppercase;
-                @include material-icon('face');
-                &::before {
-                    margin-right: 8px;
-                }
-                &:first-child {
-                    margin-left: 0;
-                }
-            }
-        }
-    }
+	.infoBox {
+		.makerName {
+			@include typography('caption');
+
+			font-weight: map-get($fontWeight, bold);
+			margin-bottom: 8px;
+		}
+		ul {
+			list-style: none;
+			margin-bottom: 0;
+			margin-left: 0;
+			padding: 0;
+
+			&::after {
+				clear: both;
+				content: '';
+				display: block;
+			}
+
+			li {
+				@include typography('caption');
+
+				color: $oc-gray-6;
+				float: left;
+				font-weight: map-get($fontWeight, 'light');
+				margin-bottom: 0;
+				margin-left: 16px;
+				text-transform: uppercase;
+
+				@include material-icon('face');
+				&::before {
+					margin-right: 8px;
+				}
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+		}
+	}
 }
