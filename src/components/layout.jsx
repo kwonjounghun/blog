@@ -34,15 +34,14 @@ const Layout = ({
 
 	return (
 		<>
-			<Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} />
+			<SideBar>
+				<Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} navigationActive={false}/>
+			</SideBar>
 			<ContentWrapper>
 				<div>
 					<main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
-					<div className={cx(styles.sideBar)}>
-						<SideBar />
-					</div>
 					<footer>
-                        © {new Date().getFullYear()}, Built with
+						© {new Date().getFullYear()}, Built with
 						{` `}
 						<a href="https://www.gatsbyjs.org">Gatsby</a>
 					</footer>

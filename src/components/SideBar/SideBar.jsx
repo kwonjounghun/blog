@@ -1,18 +1,19 @@
 import React from 'react';
 import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './SideBar.module.scss';
 
-const SideBar = () => {
+const SideBar = ({ children }) => {
 	return (
 		<div className={cx(styles.content)}>
-      sideBar
+			{children}
 		</div>
 	)
 }
 
 SideBar.propTypes = {
-
+	children: PropTypes.node.children,
 }
 
 export default SideBar

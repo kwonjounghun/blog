@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import 'utils/all';
 
+* {
+	transition: width 0.2s ease-out, height 0.2s ease-out, padding 0.2s ease-out, border-color 0.2s ease-out, filter 0.2s ease-out, transform 0.2s ease-out, opacity 0.2s ease-out, background 0.2s ease-out, background-color 0.2s ease-out, -webkit-filter 0.2s ease-out, -webkit-transform 0.2s ease-out;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -37,6 +41,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	overflow: hidden;
 }
 ol, ul {
 	list-style: none;
