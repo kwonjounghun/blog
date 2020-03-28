@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import cx from 'classnames';
@@ -13,6 +13,8 @@ import cx from 'classnames';
 import Header from './Header';
 import { ContentWrapper } from './commons';
 import SideBar from './SideBar';
+import PostList from './PostList';
+import Drawer from './Drawer';
 
 import '../styles/reset.scss';
 import styles from './layout.module.scss';
@@ -30,12 +32,24 @@ const Layout = ({
         }
       }
     }
-  `)
+	`)
+	
+	const [isActive, setIsActive] = useState(false);
+
+	const handleDrawer = (bool) => {
+		setIsActive(bool);
+	}
 
 	return (
 		<>
 			<SideBar>
-				<Header siteTitle={data.site.siteMetadata.title} navigationList={navigationList} navigationActive={false}/>
+				<Header
+					siteTitle={data.site.siteMetadata.title}
+					onHandleDrawer={handleDrawer}
+					navigationActive={isActive}
+				/>
+				<PostList />
+				<Drawer navigationList={navigationList} navigationActive={isActive} onCloseDrawer={() => handleDrawer(false)}/>
 			</SideBar>
 			<ContentWrapper>
 				<div>

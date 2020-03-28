@@ -1,20 +1,17 @@
 @import '../../../styles/utils';
 
 .contentWrapper {
-	margin: 0 auto;
-	padding: 0 16px;
-	position: relative;
-	width: 100%;
-
-	@include breakpoints('medium') {
-		width: map-get($breakpont, medium) * 1px;
-	}
+	display: none;
+	float: right;
+	height: 100vh;
+	overflow-y: hidden;
+	width: calc(100% - 41.65%);
+	z-index: -1;
 
 	@include breakpoints('large') {
-		width: map-get($breakpont, large) * 1px;
-	}
-
-	@include breakpoints('xrage') {
-		width: map-get($breakpont, xrage) * 1px;
+		display: block;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		z-index: 1;
 	}
 }

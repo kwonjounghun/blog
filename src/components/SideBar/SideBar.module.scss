@@ -3,7 +3,7 @@
 .content {
 	display: flex;
 	flex-direction: column;
-	height: 100px;
+	height: 100vh;
 	justify-content: flex-start;
 	position: fixed;
 	top: 0;
@@ -12,8 +12,6 @@
 
 	@include breakpoints('medium') {
 		flex-direction: row;
-		height: 100vh;
-		width: 100px;
 	}
 
 	@include breakpoints('large') {

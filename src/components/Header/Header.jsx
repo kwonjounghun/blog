@@ -8,8 +8,7 @@ import styles from './Header.module.scss';
 
 const Header = ({
 	navigationActive,
-	navigationList = [],
-	siteTitle,
+	onHandleDrawer,
 }) => {
 
 	const data = useStaticQuery(graphql`
@@ -38,13 +37,13 @@ const Header = ({
 		<header className={cx(styles.header, { [styles.navigationActive]: navigationActive })}>
 			<div className={cx(styles.headerTitle)}>
 				<h1 className={cx(styles.headerTitleLogo)}>
-					<a href="https://hydra-wp.ecko.me/">
-						<img src="https://hydra-wp.ecko.me/wp-content/uploads/2017/10/eckologo.png" className="retina" alt="EckoThemes" />
-					</a>
+					<Link href="/">
+						<img src={src} className="retina" alt="EckoThemes" />
+					</Link>
 				</h1>
 			</div>
 
-			<div className={cx(styles.headerNavigation)}>
+			<button onClick={() => onHandleDrawer(!navigationActive)} className={cx(styles.headerNavigation)}>
 				<span className={cx(styles.headerNavigationText)}>Navigation</span>
 				<div className={cx(styles.headerNavigationIcon)}>
 					<span></span>
@@ -52,27 +51,14 @@ const Header = ({
 					<span></span>
 					<span></span>
 				</div>
-			</div>
-			{/* </header>
-			<header className={cx(styles.header)}>
-				<ContentWrapper>
-					<div className={cx(styles.content)}>
-						<img src={src} />
-						{siteTitle}
-						{navigationList.map((item, index) => {
-							return (<Link key={index} to={`/${item}`}>{item}</Link>);
-						})}
-					</div>
-				</ContentWrapper>
-			</header> */}
+			</button>
 		</header>
 	)
 }
 
 Header.propTypes = {
-	navigationList: PropTypes.array,
-	siteTitle: PropTypes.string,
 	navigationActive: PropTypes.bool,
+	onHandleDrawer: PropTypes.func,
 }
 
 export default Header
