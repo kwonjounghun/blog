@@ -1,1 +1,1 @@
-export { default as PostListHeader } from './PostListHeader';
+export { default } from './PostListHeader';

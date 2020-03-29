@@ -3,14 +3,15 @@ import React from 'react';
 import cx from 'classnames';
 
 import PostCard from '../PostCard';
+import PostListHeader from '../PostListHeader';
 
 import styles from './PostList.module.scss';
 
 const PostList = () => {
 	return (
-		<div className={cx(styles.PostList)}>
-			postList
-			<PostCard/>
+		<div className={cx(styles.postList)}>
+			<PostListHeader />
+			<PostCard />
 		</div>
 	)
 }

@@ -5,8 +5,4 @@
 	max-width: initial;
 	overflow: hidden;
 	width: 100%;
-
-	@include breakpoints("large") {
-		max-width: 700px;
-	}
 }

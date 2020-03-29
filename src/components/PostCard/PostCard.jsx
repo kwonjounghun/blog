@@ -1,29 +1,31 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import cx from 'classnames';
+import Proptypes from 'prop-types';
 
 import styles from './PostCard.module.scss';
 
-const PostCard = () => {
+const PostCard = ({ postData }) => {
+	const { category, title, discription, thumbnail, path = '/' } = postData;
 	return (
 		<article className={cx(styles.postCard)}>
-			<Link className={cx(styles.postInner)} to="/">
+			<Link className={cx(styles.postInner)} to={path}>
 				<div className={cx(styles.postThumbnail)}>
 					<div
 						className={cx(styles.postImage)}
 						style={{
-							backgroundImage: 'url("https://hydra-wp.ecko.me/wp-content/uploads/2017/10/martin-ceralde-40407-680x847.jpg")',
+							backgroundImage: `url("${thumbnail}")`,
 						}}
 					></div>
 				</div>
 				<div className={cx(styles.postCardContent)}>
 					<div className={cx(styles.postCategory)}>
 						<span></span>
-						category
+						{category}
 					</div>
-					<h3 className={cx(styles.postTitle)}>Average Manager vs. Great Manager</h3>
+					<h3 className={cx(styles.postTitle)}>{title}</h3>
 					<p className={cx(styles.postExcerpt)}>
-					A manager is a person who manages or is in charge of something. Managers can control departments in companies, or guide the people who work for them.
+						{discription}
 					</p>
 					<p className={cx(styles.postMeta)}>
 						<span className={cx(styles.postSticky)}></span>
@@ -38,7 +40,11 @@ const PostCard = () => {
 };
 
 PostCard.propTypes = {
-
+	postData: Proptypes.object,
 };
+
+PostCard.defaultProps = {
+	postData: {},
+}
 
 export default PostCard;
