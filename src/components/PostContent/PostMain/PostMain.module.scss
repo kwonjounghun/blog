@@ -1,0 +1,66 @@
+@import '../../../styles/utils';
+
+.postMain {
+	border-left: 1px solid #e3e3e3;
+
+	.guide {
+		background: #202126;
+		height: 95px;
+		margin-left: -1px;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		z-index: 300;
+
+		.guideInner {
+			align-items: center;
+			display: flex;
+			flex-direction: row;
+			height: 100%;
+			justify-content: space-between;
+			max-width: 1215px;
+			padding: 0 105px;
+
+			.guideTitle {
+				color: #fff;
+				font-family: "Poppins", "Arial", sans-serif;
+				font-size: 17px;
+				font-weight: 500;
+
+				span {
+					background-color: #7ac143;
+					border-radius: 14px;
+					display: inline-block;
+					height: 7px;
+					margin: 0 12px 0 0;
+					vertical-align: 2px;
+					width: 7px;
+				}
+			}
+
+			.guideMeta {
+				color: #9c9ea5;
+				font-family: "Poppins", "Arial", sans-serif;
+				font-size: 15px;
+				letter-spacing: 0;
+			}
+		}
+	}
+
+	.postInner {
+		max-width: 1215px;
+		position: relative;
+
+		.postContents {
+			color: #4a4a4f;
+			margin: 0 0 90px;
+			max-width: 985px;
+			padding: 7.5% 7.5% 0;
+			position: relative;
+
+			@include breakpoints("xlarge") {
+				padding: 105px 105px 0;
+			}
+		}
+	}
+}

@@ -15,14 +15,13 @@ import { ContentWrapper } from './commons';
 import SideBar from './SideBar';
 import PostList from './PostList';
 import Drawer from './Drawer';
+import PostContent from './PostContent';
 
 import '../styles/reset.scss';
 import styles from './layout.module.scss';
 
 const Layout = ({
 	navigationList,
-	isSideBar,
-	children
 }) => {
 	const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -52,14 +51,7 @@ const Layout = ({
 				<PostList />
 			</SideBar>
 			<ContentWrapper>
-				<div>
-					<main className={cx(styles.mainContentWrapper, { [styles.useSideBar]: isSideBar })}>{children}</main>
-					<footer>
-						© {new Date().getFullYear()}, Built with
-						{` `}
-						<a href="https://www.gatsbyjs.org">Gatsby</a>
-					</footer>
-				</div>
+				<PostContent />
 			</ContentWrapper>
 		</div>
 	)
