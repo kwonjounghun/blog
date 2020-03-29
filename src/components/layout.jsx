@@ -41,15 +41,15 @@ const Layout = ({
 	}
 
 	return (
-		<>
+		<div className={cx(styles.layout)}>
 			<SideBar>
 				<Header
 					siteTitle={data.site.siteMetadata.title}
 					onHandleDrawer={handleDrawer}
 					navigationActive={isActive}
 				/>
-				<PostList />
 				<Drawer navigationList={navigationList} navigationActive={isActive} onCloseDrawer={() => handleDrawer(false)}/>
+				<PostList />
 			</SideBar>
 			<ContentWrapper>
 				<div>
@@ -61,7 +61,7 @@ const Layout = ({
 					</footer>
 				</div>
 			</ContentWrapper>
-		</>
+		</div>
 	)
 }
 
