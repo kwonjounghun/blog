@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "author": "jonghun kwon <kjh0102321@gmail.com>",
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "classnames": "^2.2.6",
+    "eslint": "^6.8.0",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
@@ -30,7 +32,11 @@
     "react-scripts": "^3.4.0",
     "resolve-url-loader": "^3.1.1",
     "storybook": "^5.3.13",
-    "styled-jsx": "^3.2.4"
+    "styled-jsx": "^3.2.4",
+    "stylelint": "^13.2.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.16.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -62,5 +68,16 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+      }
+    }
   }
 }

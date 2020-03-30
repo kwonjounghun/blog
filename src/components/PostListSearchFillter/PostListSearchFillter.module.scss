@@ -1,0 +1,76 @@
+.PostListSearchFillter {
+	background: #19191c;
+	max-height: 0;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+	padding: 0 34px;
+	position: relative;
+	transition: max-height 0.5s ease-out;
+	transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+	will-change: max-height;
+
+	.PostListSearchFillterTitle {
+		color: #fff;
+		font-family: "Poppins", "Arial", sans-serif;
+		font-size: 14px;
+		font-weight: 500;
+		letter-spacing: 0.2px;
+		margin: 0 0 25px 0;
+		padding: 0;
+	}
+
+	.PostListSearchFillterList {
+		.PostListSearchFillterListItem {
+			display: inline-block;
+			margin: 0 15px 20px 0;
+			.PostListSearchFillterListItemLink {
+				background: transparent;
+				border: 1px solid #2a2b31;
+				border-radius: 2px;
+				color: #fff;
+				display: block;
+				font-family: "Poppins", "Arial", sans-serif;
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 0.2px;
+				line-height: normal;
+				padding: 16px 22px;
+				.PostListSearchFillterListItemCategory {
+					background: #454b53;
+					border-radius: 18px;
+					display: inline-block;
+					height: 9px;
+					margin: 0 10px 0 0;
+					width: 9px;
+				}
+				.PostListSearchFillterListItemCount {
+					color: #878787;
+					display: inline-block;
+					font-weight: 400;
+					margin: 0 0 0 5px;
+					vertical-align: -1px;
+				}
+			}
+		}
+	}
+
+	&.useFillter {
+		max-height: calc(100vh - 94px);
+		transition: max-height 0.65s ease-in;
+	}
+
+	.PostListSearchFillterClose {
+		color: #525258;
+		cursor: pointer;
+		font-size: 24px;
+		padding: 20px;
+		position: absolute;
+		right: 2px;
+		top: 16px;
+		transition: color 0.2s ease-out;
+	}
+	.PostListSearchFillterCategory {
+		padding-top: 34px;
+	}
+}

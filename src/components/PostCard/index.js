@@ -1,3 +1,1 @@
-import PostCard from './PostCard';
-
-export default PostCard;
+export { default } from './PostCard';
