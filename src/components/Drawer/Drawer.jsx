@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -7,6 +7,12 @@ import styles from './Drawer.module.scss';
 
 const Drawer = ({ navigationList, navigationActive, onCloseDrawer }) => {
 	const [openSubMenu, setOpenSubMenu] = useState('');
+
+	useEffect(() => {
+		if (!navigationActive) {
+			setOpenSubMenu('');
+		}
+	}, [navigationActive]);
 	return (
 		<aside className={cx(styles.drawer, { [styles.active]: navigationActive })}>
 			<button onClick={onCloseDrawer} className={cx(styles.drawerClose)}>
