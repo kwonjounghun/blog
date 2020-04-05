@@ -22,6 +22,7 @@ import styles from './layout.module.scss';
 
 const Layout = ({
 	navigationList,
+	PostListData,
 }) => {
 	const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -48,7 +49,7 @@ const Layout = ({
 					navigationActive={isActive}
 				/>
 				<Drawer navigationList={navigationList} navigationActive={isActive} onCloseDrawer={() => handleDrawer(false)}/>
-				<PostList />
+				<PostList PostListData={PostListData}/>
 			</SideBar>
 			<ContentWrapper>
 				<PostContent />
@@ -61,6 +62,7 @@ Layout.propTypes = {
 	children: PropTypes.node.isRequired,
 	navigationList: PropTypes.array,
 	isSideBar: PropTypes.bool,
+	PostListData: PropTypes.array,
 }
 
 export default Layout

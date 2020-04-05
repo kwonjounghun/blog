@@ -3,34 +3,6 @@ const lodash = require('lodash');
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-const getCollectionList = async (graphql) => {
-	const collections = await graphql(`
-    query loadPagesQuery {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              collection
-            }
-          }
-        }
-      }
-    }
-  `).then(result => {
-		if (result.errors) {
-			throw result.errors
-		}
-
-		// Create blog post pages.
-		const collections = lodash.map(result.data.allMarkdownRemark.edges, 'node.frontmatter.collection');
-		const uniqByCollections = lodash.uniqBy(collections);
-
-		return uniqByCollections;
-	});
-
-	return collections;
-}
-
 const getOneCollectionList = async (graphql, collection) => {
 	const collections = await graphql(`
     query loadPagesQuery {
@@ -89,8 +61,6 @@ exports.createPages = async ({ graphql, actions }) => {
 			category,
 		};
 	});
-
-	console.log('collections', collections);
 
 	const siteInfo = {
 		collections,

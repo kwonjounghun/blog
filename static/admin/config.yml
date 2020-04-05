@@ -21,7 +21,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["About"], default: "About" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
   - name: "project"
@@ -39,7 +38,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
   - name: "study"
@@ -57,7 +55,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
   - name: "daily"
@@ -75,6 +72,5 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
