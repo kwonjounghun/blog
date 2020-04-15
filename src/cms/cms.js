@@ -15,15 +15,12 @@ class CustomWidgetControl extends React.PureComponent {
 }
 
 class PostIdWidget extends React.PureComponent {
+	state = {
+		value: this.props.value || sha1(`postId-${moment().format('YYYY-MM-DD HH:mm')}`),
+	}
 	render() {
-		console.log(this.props);
-		const { value } = this.props;
-		const newValue = value || sha1(`postId-${moment().format('YYYY-MM-DD HH:mm')}`);
-		state = {
-			value: newValue
-		}
 		return (
-			<input className="css-83wr9v" type="text" defaultValue={newValue} value={this.state.value}/>
+			<input className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} readOnly/>
 		);
 	}
 }
