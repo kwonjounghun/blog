@@ -24,7 +24,7 @@
 		z-index: 100;
 	}
 
-	&:hover {
+	&:hover, &.isActivePost {
 		.postInner {
 			.postCardContent {
 				transform: translate3d(5px, 0, 0);

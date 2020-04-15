@@ -5,16 +5,15 @@ import Proptypes from 'prop-types';
 
 import styles from './PostCard.module.scss';
 
-const PostCard = ({ postData }) => {
-	const { category, title, discription, thumbnail, path = '/' } = postData;
+const PostCard = ({ title, category, date, Thumbnail, path = '/', discription = '', isActivePost }) => {
 	return (
-		<article className={cx(styles.postCard)}>
+		<article className={cx(styles.postCard, { [styles.isActivePost]: isActivePost })}>
 			<Link className={cx(styles.postInner)} to={path}>
 				<div className={cx(styles.postThumbnail)}>
 					<div
 						className={cx(styles.postImage)}
 						style={{
-							backgroundImage: `url("${thumbnail}")`,
+							backgroundImage: `url("${Thumbnail}")`,
 						}}
 					></div>
 				</div>
@@ -30,7 +29,7 @@ const PostCard = ({ postData }) => {
 					<p className={cx(styles.postMeta)}>
 						<span className={cx(styles.postSticky)}></span>
 						Posted
-						<span className={cx(styles.postMetaDate)}><time dateTime="2018-09-22">on 22nd September 2018</time></span>
+						<span className={cx(styles.postMetaDate)}><time dateTime={date}>on 22nd September 2018</time></span>
 						<span className={cx(styles.postMetaAuthor)}>by Harvey Specter</span>
 					</p>
 				</div>
@@ -40,11 +39,13 @@ const PostCard = ({ postData }) => {
 };
 
 PostCard.propTypes = {
-	postData: Proptypes.object,
+	title: Proptypes.string,
+	category: Proptypes.string,
+	date: Proptypes.string,
+	Thumbnail: Proptypes.string,
+	discription: Proptypes.string,
+	path: Proptypes.string,
+	isActivePost: Proptypes.bool,
 };
-
-PostCard.defaultProps = {
-	postData: {},
-}
 
 export default PostCard;
