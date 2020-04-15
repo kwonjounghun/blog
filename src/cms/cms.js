@@ -5,7 +5,7 @@ import sha1 from 'sha1';
 
 class CustomWidgetControl extends React.PureComponent {
 	state = {
-		value: moment().format('YYYY-MM-DD HH:mm'),
+		value: `${moment().format('YYYY-MM-DD HH:mm')}`,
 	}
 	render() {
 		return (
