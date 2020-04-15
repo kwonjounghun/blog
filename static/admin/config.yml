@@ -15,10 +15,12 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
       - { label: "Collection", name: "collection", widget: "hidden", default: "Home" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["About"], default: "About" }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -32,10 +34,12 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
       - { label: "Collection", name: "collection", widget: "hidden", default: "Project" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy" }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -49,10 +53,12 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
       - { label: "Collection", name: "collection", widget: "hidden", default: "Study" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React" }
       - { label: "Body", name: "body", widget: "markdown" }
@@ -66,10 +72,12 @@ collections:
     editor:
       preview: true
     fields:
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
       - { label: "Collection", name: "collection", widget: "hidden", default: "Daily" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping" }
       - { label: "Body", name: "body", widget: "markdown" }

@@ -89,4 +89,10 @@ Drawer.propTypes = {
 	onCloseDrawer: PropTypes.func,
 }
 
+Drawer.defaultProps = {
+	navigationList: [{
+		category: []
+	}]
+}
+
 export default Drawer

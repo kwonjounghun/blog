@@ -1,32 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import { useStaticQuery, graphql } from "gatsby";
 import PropTypes from 'prop-types';
 
 import { SEO, Image, Layout } from "../components";
 
 const IndexPage = ({ ...props }) => {
 	const [skip, setSkip] = useState(0);
-	const data = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(filter: {frontmatter: {private: {eq: false}}}, limit: 1, skip: 0) {
-        edges {
-          node {
-            frontmatter {
-              title
-              private
-              date(formatString: "YYYY-MM-DD")
-              Thumbnail
-              category
-              description
-              collection
-						}
-						excerpt(pruneLength: 280)
-          }
-        }
-      }
-    }
-	`);
 
 	const {
 		pageContext,
@@ -38,7 +17,13 @@ const IndexPage = ({ ...props }) => {
 		<Layout
 			navigationList={siteInfo.collections}
 			isSideBar
-			PostListData={data.allMarkdownRemark.edges}
+			PostListData={[{
+				node: {
+					frontmatter: {
+						
+					}
+				}
+			}]}
 			skip={skip}
 			setSkip={setSkip}	
 		>

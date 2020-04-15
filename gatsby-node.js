@@ -2,21 +2,82 @@ const path = require('path');
 const lodash = require('lodash');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const firebase = require('firebase');
+const dotenv = require('dotenv');
 
-const getOneCollectionList = async (graphql, collection) => {
+dotenv.config();
+
+let postListJson = {};
+
+// postList.json 파일에서 이전 데이터 리스트를 불러오는 로직
+fs.stat(`${__dirname}/src/data/postList.json`, error => {
+	if (error) {
+		return fs.writeFile(`${__dirname}/src/data/postList.json`, '{}', (writeError) => {
+			if (writeError) {
+				throw writeError;
+			}
+			console.log('Replaced!');
+		})
+	}
+
+	postListJson = fs.readFileSync(`${__dirname}/src/data/postList.json`, (readError) => {
+		if (readError) {
+			throw readError;
+		}
+	})
+});
+
+const updateJson = (newPostListJson) => {
+	fs.writeFile(`${__dirname}/src/data/postList.json`, JSON.stringify(newPostListJson), (writeError) => {
+		if (writeError) {
+			throw writeError;
+		}
+		console.log('Replaced!');
+	})
+}
+
+firebase.initializeApp({
+	apiKey: process.env.FIREBASE_API_KEY,
+	databaseURL: process.env.FIREBASE_DATABASE_URL,
+	authDomain: `${process.env.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+	projectId: process.env.FIREBASE_PROJECT_ID,
+});
+
+const database = firebase.database();
+
+
+const updatePost = async (post) => {
+	const updates = {};
+	updates['/postList/' + post.postId] = {
+		...post,
+	}
+	return database.ref().update(updates);
+}
+
+// firebase에 데이터 넣는 로직
+const insertPost = async (post) => {
+	return database.ref('/postList/' + post.postId).set({...post});
+}
+
+// graphql을 이용해 현재 작성된 post data를 가져오는 로직
+const getAllPostList = async (graphql) => {
 	const collections = await graphql(`
     query loadPagesQuery {
-      allMarkdownRemark(filter: {frontmatter: {private: {eq: true}, collection: {eq: "${collection}"}}}) {
+      allMarkdownRemark {
         edges {
           node {
+						id
+						excerpt
             frontmatter {
+							postId
               title
-              private
-              date
-              Thumbnail
-              category
-              description
-              collection
+							collection
+							private
+							date
+							updateTime
+							Thumbnail
+							category
+							description
             }
           }
         }
@@ -24,18 +85,48 @@ const getOneCollectionList = async (graphql, collection) => {
     }
   `).then(result => {
 		if (result.errors) {
-			throw result.errors;
+			throw result.errors
 		}
 
-		return lodash.map(result.data.allMarkdownRemark.edges, 'node.frontmatter');
+		// Create blog post pages.
+		const collections = lodash.map(result.data.allMarkdownRemark.edges, 'node');
+		const data = collections.map(item => {
+			return {
+				id: item.id,
+				excerpt: item.excerpt,
+				...item.frontmatter,
+			}
+		});
+		return data;
 	});
 
 	return collections;
 }
 
+const setPost = async (collectionList, postListJson) => {
+	const newPostList = {};
+	for (let item of collectionList) {
+		if (postListJson[item.postId]) {
+			const isDifferent = lodash.isEqual(postListJson[item.postId], item)
+			if(!isDifferent) {
+				await updatePost(item);
+				newPostList[item.postId] = { ...item };
+			} 
+		} else {
+			await insertPost(item)
+			newPostList[item.postId] = { ...item };
+		}
+	}
+
+	return newPostList;
+}
+
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 	let configs = {}
+	const collectionList = await getAllPostList(graphql);
+
+	const newPostListJson = await setPost(collectionList, postListJson);
 
 	try {
 		configs = yaml.load(fs.readFileSync('./static/admin/config.yml', 'utf8'));
@@ -80,29 +171,23 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 	};
 
-	const listPageData = collections.map(async (item) => {
-		const data = await getOneCollectionList(graphql, item.name);
-		return data;
-	});
-
-	const createPostPage = (item, data) => {
+	const createPostPage = (data) => {
 		const Template = path.resolve(`src/templates/PostListPage.jsx`);
 		createPage({
-			path: `${item}`,
+			path: `${data.id}`,
 			component: Template,
 			// In your blog post template's graphql query, you can use path
 			// as a GraphQL variable to query for data from the markdown file.
 			context: {
 				siteInfo,
-				data
+				postId: data.postId,
 			},
 		});
 	};
 
-	listPageData.map((item, index) => {
-		createPostPage(collections[index].name, item);
-	})
-
+	collectionList.map((item) => {
+		createPostPage(item);
+	});
+	updateJson(newPostListJson);
 	createIndexPage();
-
 };

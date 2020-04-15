@@ -38,4 +38,12 @@ PostList.propTypes = {
 	activePost: PropTypes.object,
 };
 
+PostList.defaultProps = {
+	PostListData: [{
+		node: {
+			frontmatter: {}
+		}
+	}]
+}
+
 export default PostList;

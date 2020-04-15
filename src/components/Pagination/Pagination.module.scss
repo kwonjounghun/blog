@@ -52,11 +52,23 @@
 }
 
 @keyframes loader {
-	0%,100% { box-shadow: 0 2.5em 0 -1.3em; opacity: 0; }
-	25% { box-shadow: 0 2.5em 0 0; opacity: 1; }
+	0%,100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+		opacity: 0;
+	}
+	25% {
+		box-shadow: 0 2.5em 0 0;
+		opacity: 1;
+	}
 }
 
 @-webkit-keyframes loader {
-	0%,100% { box-shadow: 0 2.5em 0 -1.3em; opacity: 0; }
-	25% { box-shadow: 0 2.5em 0 0; opacity: 1; }
+	0%,100% {
+		box-shadow: 0 2.5em 0 -1.3em;
+		opacity: 0;
+	}
+	25% {
+		box-shadow: 0 2.5em 0 0;
+		opacity: 1;
+	}
 }
