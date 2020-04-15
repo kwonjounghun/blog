@@ -9,7 +9,7 @@ class CustomWidgetControl extends React.PureComponent {
 	}
 	render() {
 		return (
-			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} readOnly/>
+			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} onChange={this.props.onChange} readOnly/>
 		);
 	}
 }
@@ -20,7 +20,7 @@ class PostIdWidget extends React.PureComponent {
 	}
 	render() {
 		return (
-			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} readOnly/>
+			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} onChange={this.props.onChange} readOnly/>
 		);
 	}
 }
