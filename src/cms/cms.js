@@ -7,9 +7,12 @@ class CustomWidgetControl extends React.PureComponent {
 	state = {
 		value: `${moment().format('YYYY-MM-DD HH:mm')}`,
 	}
+	componentDidMount() {
+		this.props.onChange(this.state.value);
+	}
 	render() {
 		return (
-			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} onChange={this.props.onChange} readOnly/>
+			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} readOnly/>
 		);
 	}
 }
@@ -18,9 +21,13 @@ class PostIdWidget extends React.PureComponent {
 	state = {
 		value: this.props.value || sha1(`postId-${moment().format('YYYY-MM-DD HH:mm')}`),
 	}
+	componentDidMount() {
+		this.props.onChange(this.state.value);
+	}
+	
 	render() {
 		return (
-			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} onChange={this.props.onChange} readOnly/>
+			<input id={this.props.forID} className="css-83wr9v" type="text" defaultValue={this.state.value} value={this.state.value} readOnly/>
 		);
 	}
 }
