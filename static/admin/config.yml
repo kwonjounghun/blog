@@ -6,54 +6,79 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "project"
-    label: "Project"
-    folder: "content/project"
+  - name: "home"
+    label: "Home"
+    folder: "content/home"
+    discription: ""
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: "Collection", name: "collection", widget: "hidden", default: "project"}
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Home" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
+      - { label: "Category", name: "category", widget: "select", options: ["About"], default: "About" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+  - name: "project"
+    label: "Project"
+    folder: "content/project"
+    discription: "과제과제과제"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
+    fields:
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Project" }
+      - { label: "Private", name: "private", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
   - name: "study"
     label: "Study"
     folder: "content/study"
+    discription: "공부공부공부"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: "Collection", name: "collection", widget: "hidden", default: "study"}
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Study" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }
   - name: "daily"
     label: "Daily"
     folder: "content/daily"
+    discription: "일깅일기일기"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     editor:
       preview: true
     fields:
-      - { label: "Collection", name: "collection", widget: "hidden", default: "daily"}
+      - { label: "PostId", name: "postId", widget: "postId", default: "" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Daily" }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: true }
+      - { label: "Update Time", name: "updateTime", widget: "updateTime" }
       - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
       - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", defulat: [] }

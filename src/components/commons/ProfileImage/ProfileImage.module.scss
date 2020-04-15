@@ -1,0 +1,51 @@
+$size: (
+	small: 3 * 8px,
+	middle: 4 * 8px,
+	large: 5 * 8px,
+);
+
+.profileImage {
+	background-color: red;
+	border-radius: 16px;
+	box-sizing: border-box;
+	height: 32px;
+	overflow: hidden;
+	padding-top: 32px;
+	position: relative;
+	width: 32px;
+
+	&.small {
+		border-radius: map-get($size, small) / 2;
+		height: map-get($size, small);
+		padding-top: map-get($size, small);
+		width: map-get($size, small);
+	}
+
+	&.middle {
+		border-radius: map-get($size, middle) / 2;
+		height: map-get($size, middle);
+		padding-top: map-get($size, middle);
+		width: map-get($size, middle);
+	}
+
+	&.large {
+		border-radius: map-get($size, large) / 2;
+		height: map-get($size, large);
+		padding-top: map-get($size, large);
+		width: map-get($size, large);
+	}
+
+	&.square {
+		border-radius: 0;
+	}
+
+	.image {
+		background-position: center;
+		background-size: cover;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}

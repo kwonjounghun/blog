@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.postList {
+	background: #fff;
+	max-width: initial;
+	overflow: hidden;
+	width: 100%;
+
+	.postListInner {
+		height: calc(100vh - 95px);
+		margin-top: -1px;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: none;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+}

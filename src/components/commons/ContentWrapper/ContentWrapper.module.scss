@@ -1,0 +1,17 @@
+@import '../../../styles/utils';
+
+.contentWrapper {
+	display: none;
+	float: right;
+	height: 100vh;
+	overflow-y: hidden;
+	width: calc(100% - 41.65%);
+	z-index: -1;
+
+	@include breakpoints('large') {
+		display: block;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		z-index: 1;
+	}
+}

@@ -1,0 +1,7 @@
+@import '../utils/variables';
+
+@mixin breakpoints($value) {
+	@media screen and (min-width: map-get($breakpont, $value) - 1px) {
+		@content;
+	}
+}
