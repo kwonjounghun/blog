@@ -15,16 +15,15 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "PostId", name: "postId", widget: "postId", default: "" }
-      - { label: "Collection", name: "collection", widget: "hidden", default: "Home" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Home", required: true }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Update Time", name: "updateTime", widget: "updateTime" }
-      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
-      - { label: "Category", name: "category", widget: "select", options: ["About"], default: "About" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["About"], default: "About", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [], required: false }
   - name: "project"
     label: "Project"
     folder: "content/project"
@@ -34,16 +33,15 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "PostId", name: "postId", widget: "postId", default: "" }
-      - { label: "Collection", name: "collection", widget: "hidden", default: "Project" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Project", required: true }
       - { label: "Private", name: "private", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Update Time", name: "updateTime", widget: "updateTime" }
-      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
-      - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Toy", "Service"], default: "Toy", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [], required: false }
   - name: "study"
     label: "Study"
     folder: "content/study"
@@ -53,16 +51,15 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "PostId", name: "postId", widget: "postId", default: "" }
-      - { label: "Collection", name: "collection", widget: "hidden", default: "Study" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Study", required: true }
       - { label: "Private", name: "private", widget: "boolean", default: true }
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Update Time", name: "updateTime", widget: "updateTime" }
-      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
-      - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["React", "Javascript", "Webpack"], default: "React", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [], required: false }
   - name: "daily"
     label: "Daily"
     folder: "content/daily"
@@ -72,13 +69,12 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "PostId", name: "postId", widget: "postId", default: "" }
-      - { label: "Collection", name: "collection", widget: "hidden", default: "Daily" }
+      - { label: "Collection", name: "collection", widget: "hidden", default: "Daily", required: true }
       - { label: "Private", name: "private", widget: "boolean", default: true }
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", required: true }
       - { label: "Publish Date", name: "date", widget: "datetime", required: true }
       - { label: "Update Time", name: "updateTime", widget: "updateTime" }
-      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif" }
-      - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", defulat: [] }
+      - { label: "Thumbnail", name: "Thumbnail", widget: "image", default: "/admin/images/source.gif", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Travel", "Food", "Shoping"], default: "Shoping", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Tags", name: "tags", widget: "list", defulat: [], required: false }

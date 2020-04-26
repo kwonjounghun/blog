@@ -48,7 +48,7 @@ const database = firebase.database();
 
 const updatePost = async (post) => {
 	const updates = {};
-	updates['/postList/' + post.postId] = {
+	updates['/postList/' + post.id] = {
 		...post,
 	}
 	return database.ref().update(updates);
@@ -56,7 +56,7 @@ const updatePost = async (post) => {
 
 // firebase에 데이터 넣는 로직
 const insertPost = async (post) => {
-	return database.ref('/postList/' + post.postId).set({...post});
+	return database.ref('/postList/' + post.id).set({...post});
 }
 
 // graphql을 이용해 현재 작성된 post data를 가져오는 로직
@@ -69,7 +69,6 @@ const getAllPostList = async (graphql) => {
 						id
 						excerpt
             frontmatter {
-							postId
               title
 							collection
 							private
@@ -77,7 +76,6 @@ const getAllPostList = async (graphql) => {
 							updateTime
 							Thumbnail
 							category
-							description
             }
           }
         }
@@ -106,15 +104,15 @@ const getAllPostList = async (graphql) => {
 const setPost = async (collectionList, postListJson) => {
 	const newPostList = {};
 	for (let item of collectionList) {
-		if (postListJson[item.postId]) {
-			const isDifferent = lodash.isEqual(postListJson[item.postId], item)
+		if (postListJson[item.id]) {
+			const isDifferent = lodash.isEqual(postListJson[item.id], item)
 			if(!isDifferent) {
 				await updatePost(item);
-				newPostList[item.postId] = { ...item };
+				newPostList[item.id] = { ...item };
 			} 
 		} else {
 			await insertPost(item)
-			newPostList[item.postId] = { ...item };
+			newPostList[item.id] = { ...item };
 		}
 	}
 
@@ -180,7 +178,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			// as a GraphQL variable to query for data from the markdown file.
 			context: {
 				siteInfo,
-				postId: data.postId,
+				id: data.id
 			},
 		});
 	};
