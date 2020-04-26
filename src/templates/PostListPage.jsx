@@ -24,7 +24,6 @@ const BlogPost = ({ ...props }) => {
               date
               Thumbnail
               category
-              description
               collection
             }
           }
