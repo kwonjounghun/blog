@@ -1,2 +1,2 @@
 # blog
-blog를 만들어 봅시다.
+gatsby를 설치해봅시다.
