@@ -3,6 +3,8 @@ import type { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'jonghun-blog',
+    description: 'Example project for the Gatsby Head API',
+    image: '/gatsby-icon.png',
     siteUrl: 'https://www.jonghun-blog.netlify.app',
   },
   // More easily incorporate content into your pages through automatic

@@ -6,7 +6,7 @@ module.exports = {
     sourceType: 'module',
   },
   ignorePatterns: ['.eslintrc.js'],
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'import'],
   root: true,
   env: {
     browser: true,
@@ -16,13 +16,25 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: true,
   },
-  extends: ['airbnb', 'eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  settings: {
+    'import/resolver': {
+      'node': {
+        'extensions': ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
+  },
+  extends: ['airbnb', 'eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'plugin:import/errors', 'plugin:import/warnings'],
   rules: {
-    'react/function-component-definition': [2, { 'namedComponents': 'function-expression' }, { 'unnamedComponents': 'arrow-function' }],
+    'import/no-unresolved': [2, { commonjs: true, amd: true }],
+    'import/prefer-default-export': 'off',
+    'import/extensions': ['error', 'never'],
+    'react/function-component-definition': [2, { 'namedComponents': ['function-declaration', 'function-expression', 'arrow-function'], 'unnamedComponents': ['function-expression', 'arrow-function'] }],
+    'react/prop-types': 'off',
+    'react/require-default-props': 'off',
     'react/jsx-filename-extension': [1,
       {
         'extensions': [
-          '.tsx'
+          '.js', '.jsx', '.ts', '.tsx'
         ]
       }
     ],
