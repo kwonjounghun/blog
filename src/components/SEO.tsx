@@ -1,14 +1,16 @@
 import React, { ReactElement } from 'react';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
+interface SEOProps {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  children?: ReactElement;
+}
+
 export const SEO = ({
   title = '', description = '', pathname = '', children,
-}: {
-  title?: string,
-  description?: string,
-  pathname?: string,
-  children?: ReactElement
-}) => {
+}: SEOProps) => {
   const {
     title: defaultTitle, description: defaultDescription, image, siteUrl,
   } = useSiteMetadata();
